@@ -1,0 +1,29 @@
+{
+  "name": "fairtrade-coffee-blockchain",
+  "version": "1.0.0",
+  "description": "Ett REST-API byggt med Node.js för att spåra Fair Trade-kaffeleveranser med hjälp av en blockkedja och Proof-of-Work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KalleElder/fairtrade-coffee-blockchain.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/KalleElder/fairtrade-coffee-blockchain/issues"
+  },
+  "homepage": "https://github.com/KalleElder/fairtrade-coffee-blockchain#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.11",
+    "supertest": "^7.2.2",
+    "vitest": "^4.1.11"
+  }
+}
