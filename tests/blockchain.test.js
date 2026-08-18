@@ -51,4 +51,20 @@ describe('Blockchain', () => {
       expect(block.nonce).toBeGreaterThanOrEqual(0)
     })
   })
+
+  describe('constructor', () => {
+    it('ska starta med ett genesis-block och en tom lista med väntande transaktioner', () => {
+      const blockchain = new Blockchain()
+
+      expect(blockchain.chain).toHaveLength(1)
+      expect(blockchain.pendingTransactions).toEqual([])
+
+      expect(blockchain.chain[0]).toMatchObject({
+        index: 0,
+        transactions: [],
+        previousHash: '0',
+        nonce: 0
+      })
+    })
+  })
 })
