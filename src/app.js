@@ -30,4 +30,13 @@ app.post('/transactions', validateTransaction, (req, res) => {
   })
 })
 
+app.post('/mine', (req, res) => {
+  const block = blockchain.minePendingTransactions()
+
+  res.status(201).json({
+    message: 'Nytt block har skapats',
+    block
+  })
+})
+
 export default app
