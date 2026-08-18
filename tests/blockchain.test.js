@@ -24,4 +24,31 @@ describe('Blockchain', () => {
       expect(hash1).toHaveLength(64)
     })
   })
+
+  describe('mineBlock', () => {
+    it('ska hitta en hash som uppfyller svårighetsgraden', () => {
+      const blockchain = new Blockchain()
+      blockchain.difficulty = 1
+
+      const block = {
+        index: 1,
+        previousHash: 'previousHash',
+        transactions: [
+          {
+            sender: 'farm',
+            recipient: 'roastery',
+            batchId: 'batch-001',
+            weightKg: 50
+          }
+        ],
+        nonce: 0,
+        hash: ''
+      }
+
+      blockchain.mineBlock(block)
+
+      expect(block.hash.startsWith('0')).toBe(true)
+      expect(block.nonce).toBeGreaterThanOrEqual(0)
+    })
+  })
 })
