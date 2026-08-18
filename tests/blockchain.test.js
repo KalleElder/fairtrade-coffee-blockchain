@@ -86,3 +86,26 @@ describe('Blockchain', () => {
     })
   })
 })
+
+describe('minePendingTransactions', () => {
+  it('ska skapa ett nytt block och tömma väntande transaktioner', () => {
+    const blockchain = new Blockchain()
+
+    const transaction = {
+      sender: 'Coffee Farm',
+      recipient: 'Coffee Roastery',
+      batchId: 'batch-003',
+      weightKg: 100
+    }
+
+    blockchain.addTransaction(transaction)
+
+    const block = blockchain.minePendingTransactions()
+
+    expect(blockchain.chain).toHaveLength(2)
+    expect(block.transactions).toEqual([transaction])
+    expect(block.previousHash).toBe(blockchain.chain[0].hash)
+    expect(block.hash.startsWith('0')).toBe(true)
+    expect(blockchain.pendingTransactions).toEqual([])
+  })
+})
