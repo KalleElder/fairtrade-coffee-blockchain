@@ -43,6 +43,12 @@ class Blockchain {
 
     return block
   }
+
+  addTransaction(transaction) {
+    this.pendingTransactions.push(transaction)
+
+    return transaction
+  }
 }
 
 export default Blockchain
