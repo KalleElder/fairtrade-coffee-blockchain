@@ -67,4 +67,22 @@ describe('Blockchain', () => {
       })
     })
   })
+
+  describe('addTransaction', () => {
+    it('ska lägga till en transaktion i listan med väntande transaktioner', () => {
+      const blockchain = new Blockchain()
+
+      const transaction = {
+        sender: 'Coffee Farm',
+        recipient: 'Coffee Roastery',
+        batchId: 'batch-002',
+        weightKg: 75
+      }
+
+      blockchain.addTransaction(transaction)
+
+      expect(blockchain.pendingTransactions).toHaveLength(1)
+      expect(blockchain.pendingTransactions[0]).toEqual(transaction)
+    })
+  })
 })
