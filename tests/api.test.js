@@ -14,4 +14,38 @@ describe('API', () => {
       expect(response.body.chain).toHaveLength(1)
     })
   })
+
+  describe('POST /transactions', () => {
+    it('ska lägga till en giltig transaktion', async () => {
+      const transaction = {
+        sender: 'Coffee Farm',
+        recipient: 'Coffee Roastery',
+        batchId: 'batch-004',
+        weightKg: 120
+      }
+
+      const response = await request(app)
+        .post('/transactions')
+        .send(transaction)
+        .expect(201)
+
+      expect(response.body.message).toBe('Transaktionen har lagts till')
+      expect(response.body.transaction).toEqual(transaction)
+    })
+
+    it('ska avvisa en transaktion som saknar batchId', async () => {
+      const transaction = {
+        sender: 'Coffee Farm',
+        recipient: 'Coffee Roastery',
+        weightKg: 120
+      }
+
+      const response = await request(app)
+        .post('/transactions')
+        .send(transaction)
+        .expect(400)
+
+      expect(response.body.error).toBeDefined()
+    })
+  })
 })
